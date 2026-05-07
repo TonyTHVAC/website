@@ -263,6 +263,45 @@
     }
     .gallery-item:hover img { transform: scale(1.04); }
 
+    /* ── LIGHTBOX ── */
+    #lightbox {
+      display: none; position: fixed; inset: 0; z-index: 999;
+      background: rgba(0,0,0,0.92);
+      align-items: center; justify-content: center;
+    }
+    #lightbox.open { display: flex; }
+    #lightbox img {
+      max-width: 90vw; max-height: 85vh;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+      object-fit: contain;
+    }
+    .lb-btn {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: rgba(255,255,255,0.15); border: none;
+      color: white; font-size: 2rem; width: 54px; height: 54px;
+      border-radius: 50%; cursor: pointer;
+      transition: background .2s;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .lb-btn:hover { background: rgba(255,255,255,0.30); }
+    #lb-prev { left: 16px; }
+    #lb-next { right: 16px; }
+    #lb-close {
+      position: absolute; top: 16px; right: 16px;
+      background: rgba(255,255,255,0.15); border: none;
+      color: white; font-size: 1.4rem; width: 44px; height: 44px;
+      border-radius: 50%; cursor: pointer;
+      transition: background .2s;
+      display: flex; align-items: center; justify-content: center;
+    }
+    #lb-close:hover { background: rgba(255,255,255,0.30); }
+    #lb-counter {
+      position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+      color: rgba(255,255,255,0.7); font-size: 0.9rem; font-weight: 700;
+      background: rgba(0,0,0,0.4); padding: 6px 16px; border-radius: 50px;
+    }
+
     /* ── CONTACT ── */
     #contact { background: white; }
     .contact-layout {
@@ -482,7 +521,7 @@
     <div class="why-card">
       <div class="why-num">5+</div>
       <h4>Years Experience</h4>
-      <p>Over a decade of serving our community with skilled HVAC work.</p>
+      <p>Over five years of serving our community with skilled HVAC work.</p>
     </div>
     <div class="why-card">
       <div class="why-num">30+</div>
@@ -507,41 +546,34 @@
   <div style="max-width:1100px;margin:0 auto;" class="centered">
     <div class="section-label">Our Work</div>
     <h2 class="section-title">Photo Gallery</h2>
-    <p class="section-sub">Replace these placeholders with your real project photos by swapping the divs below with &lt;img&gt; tags.</p>
   </div>
   <div class="gallery-grid">
-    <div class="gallery-item">
-      <div class="gallery-placeholder">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
-        <span>Add your photo here<br/><small>Replace with &lt;img src="your-photo.jpg"&gt;</small></span>
-      </div>
+    <div class="gallery-item" onclick="openLightbox(0)">
+        <img src="images/image_1.jpg"/>
     </div>
-    <div class="gallery-item">
-      <div class="gallery-placeholder">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
-        <span>Add your photo here</span>
-      </div>
+    <div class="gallery-item" onclick="openLightbox(1)">
+        <img src="images/image_2.jpg"/>
     </div>
-    <div class="gallery-item">
-      <div class="gallery-placeholder">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
-        <span>Add your photo here</span>
-      </div>
+    <div class="gallery-item" onclick="openLightbox(2)">
+        <img src="images/image_3.jpg"/>
     </div>
-    <div class="gallery-item">
-      <div class="gallery-placeholder">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
-        <span>Add your photo here</span>
-      </div>
+    <div class="gallery-item" onclick="openLightbox(3)">
+        <img src="images/image_4.jpg"/>
     </div>
-    <div class="gallery-item">
-      <div class="gallery-placeholder">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
-        <span>Add your photo here</span>
-      </div>
+    <div class="gallery-item" onclick="openLightbox(4)">
+        <img src="images/image_5.jpg"/>
     </div>
   </div>
 </section>
+
+<!-- ── LIGHTBOX ── -->
+<div id="lightbox">
+  <button id="lb-close" onclick="closeLightbox()">✕</button>
+  <button class="lb-btn" id="lb-prev" onclick="shiftPhoto(-1)">&#8592;</button>
+  <img id="lb-img" src="" alt="Gallery photo"/>
+  <button class="lb-btn" id="lb-next" onclick="shiftPhoto(1)">&#8594;</button>
+  <div id="lb-counter"></div>
+</div>
 
 <!-- ── CONTACT ── -->
 <section id="contact">
@@ -642,6 +674,59 @@
 
 <script>
   document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // ── LIGHTBOX ──
+  // Collects only gallery items that have a real <img> inside
+  let photos = [];
+  let current = 0;
+ 
+  function buildPhotoList() {
+    photos = [];
+    document.querySelectorAll('.gallery-item img').forEach(img => {
+      photos.push({ src: img.src, alt: img.alt });
+    });
+  }
+ 
+  function openLightbox(index) {
+    buildPhotoList();
+    // index refers to clicked item — map to photo index (only real images)
+    const clickedItem = document.querySelectorAll('.gallery-item')[index];
+    const img = clickedItem.querySelector('img');
+    if (!img) return; // placeholder, no image yet
+    current = photos.findIndex(p => p.src === img.src);
+    showPhoto();
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+ 
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+ 
+  function shiftPhoto(dir) {
+    current = (current + dir + photos.length) % photos.length;
+    showPhoto();
+  }
+ 
+  function showPhoto() {
+    document.getElementById('lb-img').src = photos[current].src;
+    document.getElementById('lb-img').alt = photos[current].alt;
+    document.getElementById('lb-counter').textContent = (current + 1) + ' / ' + photos.length;
+  }
+ 
+  // Close on backdrop click
+  document.getElementById('lightbox').addEventListener('click', function(e) {
+    if (e.target === this) closeLightbox();
+  });
+ 
+  // Keyboard navigation
+  document.addEventListener('keydown', function(e) {
+    if (!document.getElementById('lightbox').classList.contains('open')) return;
+    if (e.key === 'ArrowRight') shiftPhoto(1);
+    if (e.key === 'ArrowLeft') shiftPhoto(-1);
+    if (e.key === 'Escape') closeLightbox();
+  });
 </script>
 </body>
 </html>
